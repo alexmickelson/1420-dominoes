@@ -7,6 +7,19 @@ public class Game
   public Player Player1 { get; private set; }
   public Player Player2 { get; private set; }
 
+  public Player? Winner
+  {
+    get
+    {
+      if(IsGameOver == false)
+        return null;
+     
+      if(Player1.Tiles.Count <= Player2.Tiles.Count)
+        return Player1;
+      return Player2;
+    }
+  }
+
   public List<Tile> Board { get; private set; }
   public bool NoOneCanPlay
   {

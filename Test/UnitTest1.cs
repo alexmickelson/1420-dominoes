@@ -47,4 +47,40 @@ public class UnitTest1
         testGame.Join(secondPlayer);
         testGame.IsPlayable.Should().Be(true);
     }
+
+    [Fact]
+    public void PlayerCanPlayTile()
+    {
+        Game testGame = new Game();
+
+        Player firstPlayer = new Player("first player");
+        Player secondPlayer = new Player("second player");
+        testGame.Join(firstPlayer);
+        testGame.Join(secondPlayer);
+
+        var tileToPlay = new Tile(1, testGame.Board.First().Num1);
+
+        firstPlayer.Tiles.Add(tileToPlay);
+
+        testGame.PlayTile(firstPlayer, tileToPlay);
+        testGame.Board.Count.Should().Be(2);
+    }
+    [Fact]
+    public void CannotPlayTileYouDoNotHave()
+    {
+        Game testGame = new Game();
+
+        Player firstPlayer = new Player("first player");
+        Player secondPlayer = new Player("second player");
+        testGame.Join(firstPlayer);
+        testGame.Join(secondPlayer);
+
+        var tileToPlay = new Tile(1, testGame.Board.First().Num1);
+
+        Action act = () => { 
+            testGame.PlayTile(firstPlayer, tileToPlay); 
+        };
+
+        act.Should().Throw<InvalidMoveException>();
+    }
 }

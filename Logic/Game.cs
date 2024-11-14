@@ -85,5 +85,28 @@ public class Game
     }
     GameStateChanged?.Invoke();
   }
-}
+  public void PlayTile(Player player, Tile tile)
+  {
+    if (player.Tiles.Contains(tile) == false)
+    {
+      throw new InvalidMoveException();
+    }
 
+    var numtomatch = Board.Last().Num2;
+
+    if (tile.Num1 == numtomatch)
+    {
+      Board.Add(tile);
+      player.Tiles.Remove(tile);
+    }
+    else if (tile.Num2 == numtomatch)
+    {
+      player.Tiles.Remove(tile);
+      Board.Add(new Tile(tile.Num2, tile.Num1));
+    }
+    else
+    { throw new InvalidMoveException(); }
+
+    GameStateChanged?.Invoke();
+  }
+}

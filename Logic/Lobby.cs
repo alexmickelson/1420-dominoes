@@ -1,3 +1,5 @@
+namespace Lab12Logic;
+
 public static class Lobby
 {
   public static List<Game> Games { get; } = new List<Game>();

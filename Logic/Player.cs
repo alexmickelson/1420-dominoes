@@ -1,3 +1,5 @@
+namespace Lab12Logic;
+
 public class Player
 {
     public const int StartingTileCount = 7;

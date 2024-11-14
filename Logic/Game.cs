@@ -1,3 +1,6 @@
+namespace Lab12Logic;
+
+
 public class Game
 {
   public static Game Instance { get; private set; } = new Game();

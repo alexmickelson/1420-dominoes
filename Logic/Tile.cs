@@ -1,3 +1,5 @@
+namespace Lab12Logic;
+
 public class Tile : IEquatable<Tile?>
 {
    public const int Max = 6;

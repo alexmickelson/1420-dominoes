@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-
+using Lab12Logic;
 namespace Test;
 
 public class UnitTest1
